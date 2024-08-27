@@ -1,0 +1,3 @@
+{
+	"extends": ["@mr.karakus/eslint-config-react-native"]
+}
