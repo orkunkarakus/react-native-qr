@@ -1,6 +1,6 @@
 {
 	"name": "react-native-qr",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Qr generator for react native",
 	"source": "./src/index.tsx",
 	"main": "./lib/commonjs/index.js",
