@@ -7,6 +7,11 @@
 
 <h3 align="center">Qr generator library for react native.</h3>
 
+<div align="center">
+<img alt="IOS" src="public/ios.png" style="height:400px;margin-right:10px">
+<img alt="Android" src="public/android.png" style="height:400px">
+</div>
+
 ## Features
 
 - Native code based
