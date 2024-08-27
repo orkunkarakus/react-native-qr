@@ -61,7 +61,8 @@
 	},
 	"homepage": "https://github.com/orkunkarakus/react-native-qr#readme",
 	"publishConfig": {
-		"registry": "https://registry.npmjs.org/"
+		"registry": "https://registry.npmjs.org/",
+		"access": "public"
 	},
 	"devDependencies": {
 		"@mr.karakus/eslint-config-react-native": "0.0.5",
