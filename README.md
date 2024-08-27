@@ -32,6 +32,20 @@ pnpm i react-native-qr
 bun add react-native-qr
 ```
 
+## Linking
+
+### IOS
+
+You need to install pods
+
+```shell
+cd ios && pod install
+```
+
+### Android
+
+Autolinking on android side !
+
 ## Usage
 
 ### Simple
