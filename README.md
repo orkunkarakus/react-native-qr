@@ -1,33 +1,97 @@
-# react-native-qr
+<h1 align="center">React Native QR</h1>
 
-Qr generator for react native
+<div align="center">
+<img alt="NPM Type Definitions" src="https://img.shields.io/npm/types/react-native-qr">
+<img alt="NPM Downloads" src="https://img.shields.io/npm/dw/react-native-qr">
+</div>
+
+<h3 align="center">Qr generator library for react native.</h3>
+
+## Features
+
+- Native code based
+- Write with Objective-C and Kotlin
+- New Architecture support
+- Base64 based png export
 
 ## Installation
 
 ```sh
-npm install react-native-qr
+npm i react-native-qr
+
+# or (yarn)
+
+yarn add react-native-qr
+
+# or (pnpm)
+
+pnpm i react-native-qr
+
+# or (bun)
+
+bun add react-native-qr
 ```
 
 ## Usage
 
+### Simple
 
-```js
-import { multiply } from 'react-native-qr';
+```ts
+import { generateQrCode } from 'react-native-qr';
+
+const SIZE = 250;
+const TEXT = 'https://orkunkarakus.com';
 
 // ...
 
-const result = await multiply(3, 7);
-```
+const [result, setResult] = useState<string | undefined>();
 
+useEffect(() => {
+	generateQrCode(TEXT, SIZE).then((img: string | undefined) => {
+		if (!img) {
+			return;
+		}
+		setResult(img);
+	});
+}, []);
+
+// ...
+
+return (
+	// ...
+
+	<Image
+		source={{
+			uri: result
+		}}
+		style={{
+			width: SIZE,
+			height: SIZE
+		}}
+	/>
+
+	// ...
+);
+```
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the
+repository and the development workflow.
 
 ## License
 
-MIT
+- MIT
+
+## Thanks to
+
+- [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
 
 ---
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+<p align="center">
+Built with ♥️ by
+  <a href="https://orkunkarakus.com" target="_blank">
+    <span>Orkun KARAKUŞ</span>
+  </a>
+</p>
