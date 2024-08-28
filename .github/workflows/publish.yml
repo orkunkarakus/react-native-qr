@@ -1,0 +1,60 @@
+name: Publish package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Building packages
+        run: yarn build
+
+      
+      - name: Import bot's GPG key for signing commits
+        id: import-gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.BOT_GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.BOT_GPG_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+      
+      - name: Git configuration
+        run: |
+          git config user.name "apricotify"
+          git config user.email "apricotify@orkcorp.com"
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+      # Create Release On Github
+      - name: Create Release On Github
+        run: |
+          git pull
+          gh release create v${{ steps.package-version.outputs.current-version }} --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+  
+  publish:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release package to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
