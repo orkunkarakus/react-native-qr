@@ -1,6 +1,6 @@
 {
 	"name": "react-native-qr",
-	"version": "0.0.3",
+	"version": "1.0.0",
 	"description": "Qr generator for react native",
 	"source": "./src/index.tsx",
 	"main": "./lib/commonjs/index.js",
@@ -43,7 +43,8 @@
 		"clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
 		"prepare": "(husky||true) && bob build",
 		"release": "release-it",
-		"build": "bob build --target codegen"
+		"build:codegen": "bob build --target codegen",
+		"build":"bob build"
 	},
 	"keywords": [
 		"react-native",
