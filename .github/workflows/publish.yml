@@ -48,13 +48,9 @@ jobs:
           gh release create v${{ steps.package-version.outputs.current-version }} --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
-  
-  publish:
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Release package to NPM
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
