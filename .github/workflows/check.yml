@@ -19,7 +19,7 @@ jobs:
         run: yarn lint
 
       - name: Typecheck files
-        run: yarn typecheck
+        run: yarn type:check
 
   test:
     runs-on: ubuntu-latest
