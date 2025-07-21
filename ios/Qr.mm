@@ -4,7 +4,7 @@
 RCT_EXPORT_MODULE()
 
 
-RCT_EXPORT_METHOD(generateQrCode:(NSString *)inputString withSize:(CGFloat)size resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(generateQrCode:(NSString *)inputString size:(CGFloat)size resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
     UIImage *qrCodeImage = [QRCodeUtil generateQRCodeFromString:inputString withSize:size];
 
